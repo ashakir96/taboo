@@ -3,15 +3,18 @@ import words from "../Words";
 
 export default function Card () {
 
-    const first = () => {
-        for (let word of words) {
-            return (
-                word.word
-            )
-        }
+    const list = () => {
+        const word = words.map((word) => {
+            for (let forbidden of word.forbidden) {
+                return (
+                    <div>{word.word}: {forbidden} </div>
+                )
+            }
+        });
+        return word;
     }
 
     return (
-        <div> {first()} </div>
+        <div> {list()} </div>
     )
 }
