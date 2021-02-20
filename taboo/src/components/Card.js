@@ -1,20 +1,19 @@
-import words from "../Words";
+import React from "react";
 
-
-export default function Card () {
-
-    const list = () => {
-        const word = words.map((word) => {
-            for (let forbidden of word.forbidden) {
-                return (
-                    <div>{word.word}: {forbidden} </div>
-                )
+export default function Card (props) {
+    const forbiddenWords = (words) => {
+        let string = ""
+        for (let i = 0; i < words.length; i++) {
+            if (i < words.length - 1) {
+                string = string + words[i] + ", ";
+            } else if (i === words.length - 1) {
+                string = string + words[i];
             }
-        });
-        return word;
+        } return string;
     }
-
     return (
-        <div> {list()} </div>
+        <div>
+            {props.word}: {forbiddenWords(props.forbidden)}
+        </div>
     )
 }
